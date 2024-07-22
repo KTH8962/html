@@ -27,19 +27,21 @@
     }
     #container {
         display: flex;
-        align-items: flex-start;
+        align-items: stretch;
         justify-content: space-between;
-        height: 100vh;
     }
     aside {
         width: 260px;
         padding: 20px;
-        background-color: #eee;
-        height: 100%;
+        background-color:antiquewhite;
+        position: sticky; top: 0; align-self: flex-start; height: 100vh;
     }
-    #namecard img {
-        display: inline-block;
-        width: 100%;
+    #namecard .img-box {
+        display: block;
+        width: 200px; height: 200px;
+        border-radius: 100%; font-size: 0;
+        background: url(./images/product_ROXi_img.png) 50% top peachpuff;
+        background-size: cover; margin: 0 auto;
     }
     #namecard h1 {
         margin-top: 1em;
@@ -76,12 +78,17 @@
     #main {
         width: calc(100% - 260px);
         padding: 2.5em;
+        display: flex; flex-wrap: wrap; justify-content: space-between;
     }
-    #main section {
-        border-bottom: 1px solid #aaa;
-        padding: 1.25em 2.5em;
+    #main .sec {
+        padding: 1.25em 2.5em; width: calc(50% - 2em);
+        margin: 1em; border-radius: 0.5em;
+        transition: all .2s; border: 1px solid #f2f2f2;
     }
-    #main section h2 {
+    #main .sec:hover {
+        box-shadow: 6px 6px 8px 0 rgba(0, 0, 0, 0.1);
+    }
+    #main .sec h2 {
         margin-bottom: 0.5em;
     }
     .intro-txt {
@@ -94,14 +101,10 @@
         margin-top: 1.5em;
     }
     .career-list1 p {
-        background-color: #f2f2f2;
+        background-color: #eee;
         text-align: center;
         padding: 10px 0; font-weight: bold;
         border-radius: 2px;
-        transition: all .2s;
-    }
-    .career-list1 li:hover p {        
-        box-shadow: 6px 6px 8px 0 rgba(0, 0, 0, 0.1);
     }
     .career-list2 {
         margin-top: 1.5em;
@@ -134,12 +137,11 @@
         <!-- 사이드바 -->
         <aside>
             <div id="namecard">
-                <img src="../images/product_ROXi_img.png" alt="">
+                <span class="img-box"><span>이미지</span></span>
                 <h1>Kim TaeHwan</h1>    
                 <p>프로그래밍 재밌다</p>
             </div>
             <div id="detail">
-                <p>Bucheon, Korea</p>
                 <p>gaya1003@naver.com</p>                                 
             </div>
             <div id="sns">
@@ -148,13 +150,13 @@
             </div>           
         </aside>
         <div id="main">
-            <section>
+            <section class="sec sec1">
                 <h2 class="subtitle">자기소개</h2>
-                <p class="intro-txt"><mark>프로그래밍</mark>에 관심이 많습니다. <br>현재 열심히 공부하며 코딩 중!</p>
+                <p class="intro-txt">프로그래밍에 관심이 많습니다. <br>현재 열심히 공부하며 코딩 중!</p>
             </section>
 
             <!-- 경력 -->
-            <section>
+            <section class="sec sec2">
                 <h2 class="subtitle">Experience</h2>
                 <ul class="career-list1">
                     <li>
@@ -176,7 +178,7 @@
             </section>
 
             <!-- 숙련도 -->
-            <section>
+            <section class="sec sec3">
                 <h2 class="subtitle">보유 기술</h2>
                 <ul class="skill-list">
                     <li>자바 </li>
@@ -185,7 +187,7 @@
             </section>
 
             <!-- 학력 -->
-            <section>
+            <section class="sec sec4">
                 <h2 class="subtitle">Education</h2>
                 <table>
                   <caption>학력 사항</caption>
