@@ -37,7 +37,7 @@
         position: sticky; top: 0; align-self: flex-start; height: 100vh;
     }
     #namecard .img-box {
-        display: block;
+        display: block; cursor: pointer;
         width: 200px; height: 200px;
         border-radius: 100%; font-size: 0;
         background: url(./images/product_ROXi_img.png) 50% top peachpuff;
@@ -46,7 +46,7 @@
     #namecard h1 {
         margin-top: 1em;
     }
-    #namecard p {
+    .name-desc {
         margin-top: 1em;
         font-size: 0.9em;
         color: #aaa;
@@ -95,9 +95,11 @@
         line-height: 2;
     }
     .career-list1 {
-        display: flex;
+        display: flex; flex-wrap: wrap;
         justify-content: space-around;
         list-style: none;
+    }
+    .career-list1 li {        
         margin-top: 1.5em;
     }
     .career-list1 p {
@@ -139,7 +141,7 @@
             <div id="namecard">
                 <span class="img-box"><span>이미지</span></span>
                 <h1>Kim TaeHwan</h1>    
-                <p>프로그래밍 재밌다</p>
+                <p class="name-desc">프로그래밍 재밌다</p>
             </div>
             <div id="detail">
                 <p>gaya1003@naver.com</p>                                 
@@ -219,3 +221,26 @@
     </div>
 </body>
 </html>
+
+<script>
+    let imgBox = document.querySelector('.img-box');
+
+    imgBox.onclick = function(e) {
+        imgBox.classList.toggle('on');
+        if(imgBox.classList.contains('on')) {
+            imgBox.style.backgroundImage = 'url(../images/product_ROYi_img.png)';
+        } else {
+            imgBox.style.backgroundImage = 'url(../images/product_ROXi_img.png)';
+        }
+    }
+
+    let nameDesc = document.querySelector('.name-desc');
+
+    nameDesc.addEventListener("mouseenter", () => {
+        nameDesc.innerText = "Program is Funny";
+    });
+    nameDesc.addEventListener("mouseleave", () => {
+        nameDesc.innerText = "프로그래밍 재밌다";
+    });
+
+</script>

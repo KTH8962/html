@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" onclick="popup()">팝업열기</button>
+</body>
+</html>
+
+<script>
+    //console.log(screen.width, screen.height, screen.availWidth, screen.availHeight);
+
+    function popup(){
+        let width = 500;
+        let height = 500;
+        let left = (screen.availWidth - width) / 2;
+        let top = (screen.availHeight - height) / 2;
+        window.open("test2.html", "dd", `width=${width}, height=${height}, left= ${left}, top= ${top}`);
+    }
+</script>

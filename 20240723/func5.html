@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>점심시간 전 마지막 복습</div>
+    <input type="text" placeholder="color">
+    <button type="button" onclick="changeColor()">텍스트 색 변경</button>
+    
+</body>
+</html>
+
+<script>
+    function changeColor(){
+        let txt = document.querySelector('div');
+        let ip = document.querySelector('input').value;
+
+        txt.style.color = ip;
+    }
+</script>

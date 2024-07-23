@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" id="txt1" placeholder="첫번째 숫자">
+    <input type="text" id="txt2" placeholder="두번째 숫자">
+    <button type="button" onclick="addFunc();">더하기</button>
+    <div id="result"></div>
+</body>
+</html>
+
+<script>
+    function addFunc() {
+        let inp = document.querySelectorAll("input");
+        let inp1 = parseInt(document.querySelector('#txt1').value);
+        let inp2 = parseInt(document.querySelector('#txt2').value);
+        var item = document.querySelector('#result');
+        item.innerText = inp1 + inp2;
+        //document.body.innerHTML += `<br>${parseInt(inp[0].value) + parseInt(inp[1].value)}`;
+        document.body.innerHTML += `<h3>${inp1 + inp2}</h3>`;
+    }
+</script>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" onclick="pageMove()">페이지이동</button>
+    <button type="button" onclick="pageOpen()">페이지열기</button>
+    <button type="button" onclick="pageClose()">페이지닫기</button>
+    <button type="button" onclick="popup()">팝업열기</button>
+</body>
+</html>
+
+<script>
+    function pageMove(){
+        location.href = 'test2.html';
+    }
+    function pageOpen(){
+        window.open('popup.html');
+    }
+    function pageClose(){
+        window.close();
+    }
+    function popup(){
+        window.open("test2.html", "dd", "width=500, height=500, left=200, top=200");
+    }
+</script>

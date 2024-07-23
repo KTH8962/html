@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button type="button" onclick="colorTagName();">TagName</button>
+        <button type="button" onclick="colorClassName();">ClassName</button>
+        <button type="button" onclick="colorQuery1();">Query1</button>
+        <button type="button" onclick="colorQuery2();">Query2</button>
+    </div>
+    <p class="back-yellow">과목 목록</p>
+    <ul>
+        <li>자바</li>
+        <li>오라클</li>
+        <li class="back-yellow">HTML</li>
+        <li>CSS</li>
+        <li>JAVASCRIPT</li>
+    </ul>
+</body>
+</html>
+
+<script>
+    function colorTagName() {
+        let list = document.getElementsByTagName("li");
+        //console.log(list.item(0));
+        for(let i = 0; i < list.length; i++) {
+            //list[i].style.color = "red";
+            list.item(i).style.color = "red";
+        }
+    }
+
+    function colorClassName() {
+        let list = document.getElementsByClassName("back-yellow");
+        for(let i = 0; i < list.length; i++) {
+            list.item(i).style.backgroundColor = "yellow";
+        }
+    }
+
+    function colorQuery1() {
+        let list = document.querySelector("p");
+        list.style.color = "blue";
+    }
+
+    function colorQuery2() {
+        let list = document.querySelectorAll("li");
+        console.log(list);
+        for(let i = 0; i < list.length; i++) {
+            list[i].style.color = "blue";
+        }
+    }
+</script>
