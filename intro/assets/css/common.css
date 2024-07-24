@@ -1,0 +1,11 @@
+body {font-family: var(--rubikSuit-font);}
+@font-face { font-family: 'yg-jalnan'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff'); font-weight: normal; font-style: normal; }
+.JF {font-family: 'yg-jalnan';}
+/***** main *****/
+#main-container section {display: flex; align-items: center; justify-content: center; width: 100%; /*min-width: 1800px;*/ height: 100vh; min-height: 900px;}
+
+.visual-box {background-color: rgb(214, 253, 230);}
+.visual {display: flex; align-items: center;}
+.visual .img-box {width: 260px; height: 260px; border-radius: 100%; background: url(../images/profile.png) center center; background-size: cover; font-size: 0; box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.3);}
+.visual .txt-box {width: 550px; margin-left: 50px; font-size: 30px; font-weight: bold; color: rgb(66, 128, 92);}
+/***** //main *****/

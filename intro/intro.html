@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/common.css">
+    <title>Document</title>
+</head>
+<body>
+    <header id="header">
+        <nav>
+            <ul>
+                <li><a href="javascript:void(0);"></a></li>
+                <li><a href="javascript:void(0);"></a></li>
+                <li><a href="javascript:void(0);"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="main-container">
+        <section class="visual-box">
+            <div class="visual">
+                <div class="img-box">이미지</div>
+                <div class="txt-box JF"></div>
+            </div>
+        </section>
+    </main>
+    <footer id="footer"></footer>
+
+
+</body>
+</html>
+<script>    
+    function fnTyping(){
+        let cnt = 0;
+        let visTxt = document.querySelector(".visual .txt-box");
+        let txt = "퍼블리셔를 경험한 예비 풀스택 개발자\n김태환입니다.";
+        
+        let fninterval = setInterval(() => {
+            if(txt[cnt] === "\n") {
+                txt[cnt] = "<br>";
+            }
+            visTxt.innerHTML += txt[cnt];
+            cnt++;
+            if(cnt == txt.length) {
+                clearInterval(fninterval);
+            }
+        }, 150);        
+    }
+    fnTyping();
+</script>
