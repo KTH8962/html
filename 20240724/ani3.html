@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 150px; height: 150px;
+            border: 1px solid #eee;
+            display: inline-block; background-color: gray;
+            margin: 20px; 
+            /* transition: all .2s; */
+            /* animation: ani2 1s linear 1s infinite alternate forwards; */
+            animation-name: ani2;
+            animation-duration: 3s;
+            animation-delay: 1s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        .box2 {
+            width: 150px; height: 150px;
+            border: 1px solid #eee;
+            display: inline-block; background-color: gray;
+            margin: 20px; 
+            animation: ani3 1s linear 1s infinite alternate forwards;
+        }
+        @keyframes ani1 {
+            from {}
+            to {}
+        }
+        @keyframes ani2 {
+            0% {transform: rotate(0deg);}
+            50% {transform: rotate(180deg);}
+            100% {transform: rotate(360deg);}
+        }  
+        @keyframes ani3 {
+            0% {transform: perspective(100px) rotateX(0deg) rotateY(0deg); background-color: #f90;}
+            50% {transform: perspective(100px) rotateX(180deg) rotateY(0deg); background-color: darkblue;}
+            100% {transform: perspective(100px) rotateX(180deg) rotateY(180deg); background-color: beige;}
+        }  
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box2"></div>
+</body>
+</html>

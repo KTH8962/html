@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="text" id="phone" placeholder="핸드폰번호 숫자만 입력해주세요">
+    </div>
+    <div>
+        <button type="button" onclick="fnJoin();">가입</button>
+    </div>
+</body>
+</html>
+
+<script>
+    function fnJoin() {
+        let phone = document.querySelector("#phone").value;
+        let regex = /^[0-9]*$/; // 숫자만 체크
+
+        if(regex.test(phone)) {
+            alert("완료");
+        } else {
+            alert("숫자만 입력하세요");
+        }
+    }
+</script>

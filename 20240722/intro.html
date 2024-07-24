@@ -131,6 +131,14 @@
     .skill-list li {
         margin-top: 0.5em;
     }
+    #time .tit {
+        margin-top: 1.5em;
+        font-weight: bold;
+    }
+    #time .currentTime {
+        margin-top: 0.5em;
+        font-size: 0.9em;
+    }
   </style>
 </head>
 
@@ -149,7 +157,11 @@
             <div id="sns">
                 <h2>SNS</h2>
                 <p><a href="javascript:alert('아무것도없어요.')">클릭!</a></p>
-            </div>           
+            </div>
+            <div id="time">
+                <p class="tit">현재시간</p>
+                <p class="currentTime"></p>
+            </div>        
         </aside>
         <div id="main">
             <section class="sec sec1">
@@ -243,4 +255,25 @@
         nameDesc.innerText = "프로그래밍 재밌다";
     });
 
+
+    let currentTime = document.querySelector(".currentTime");
+    fnTime();
+    setInterval(fnTime, 1000);
+
+
+    function fnTime() {
+        let time = new Date();
+        let hour = time.getHours(), min = time.getMinutes(), second = time.getSeconds();
+        
+        if(hour < 10) {
+            hour = hour.toString().padStart(2, '0');
+        }
+        if(min < 10) {
+            min = min.toString().padStart(2, '0');
+        }
+        if(second < 10) {
+            second = second.toString().padStart(2, '0');
+        }
+        currentTime.innerText = `${hour} : ${min} : ${second}`;
+    }
 </script>
