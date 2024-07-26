@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <meta charset="EUC-KR">
+    <title>Insert title here</title>
+    <style>
+        table, tr, th, td {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <div v-if="true">{{name}}</div> -->
+        <!-- <div >{{list}}</div> -->
+        <div v-if="isInfo">
+            <div>이름 : {{info.name}}</div>
+            <div>메일 : {{info.email}}</div>
+            <div><button type="button" @click="isInfo = !isInfo">되돌아가기</button></div>
+            <!-- <div><button type="button" @click="isInfo = false">되돌아가기</button></div> -->
+        </div>
+        <!-- <table v-else> -->
+        <table v-if="!isInfo">
+            <tr>
+                <th>번호</th>
+                <th>이름</th>
+                <th>이메일</th>
+                <th>웹사이트</th>
+                <th>상세보기</th>
+            </tr>
+            <tr v-for="(item, index) in list">
+                <td>{{item.id}}</td>
+                <td v-if="index < 5" style="color:blue;">{{item.name}}</td>
+                <td v-else style="color:red;">{{item.name}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.website}}</td>
+                <td><button type="button" @click="fnInfo(item)">상세보기</button></td>
+            </tr>
+        </table>
+        <!-- 변수값은 :value처럼 :붙이고 넣는다. -->
+        <!-- <input type="text" :value="info.name"> -->
+        <!-- <input type="text" v-model="info.name"> -->
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    // key : value
+                    name: "홍길동",
+                    list : [],
+                    info : {},
+                    isInfo : false
+                };
+            },
+            methods: {
+                //test1(){}, test2(){}, test3(){}
+                fnGetList() {
+                    let self = this;
+                    $.ajax({
+                        url: "https://jsonplaceholder.typicode.com/users",
+                        dataType: "json",
+                        type: "GET",
+                        data: {},
+                        success: function (data) {
+                            //console.log(data);
+                            // function(){} => this는 본인내부
+                            // ()=>{} => this는 부모의 this로 기준
+                            self.list = data;
+                        }
+                    });
+                },
+                fnInfo(item) {
+                    let self = this;
+                    self.info = item;
+                    self.isInfo = !self.isInfo;
+                }
+            },
+            mounted() {
+                //화면 로드시 실행되는 부분
+                this.fnGetList();
+            }
+        });
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <style>
+        img {max-width: 456px;}
+    </style>
+</head>
+<body>
+    <label><input type="radio" name="subject" value="java"><span>자바</span></label><br>
+    <label><input type="radio" name="subject" value="oracle"><span>오라클</span></label><br>
+    <label><input type="radio" name="subject" value="html"><span>html/css/javascript</span></label><br>
+    <label><input type="radio" name="subject" value="jquery"><span>jQuery</span></label>
+    <div>
+        <button type="button" id="btn">클릭!</button>
+    </div>
+    <hr>
+    <img src="">
+</body>
+</html>
+
+<script>
+    $("#btn").on("click", () => {
+        let subVal = $("input[name='subject']:checked").val();
+        
+        $("img").attr('src',`../images/${subVal}.png`);
+    });
+</script>

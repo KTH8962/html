@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, tr, th, td {
+            border: 1px solid #aaa;
+            padding: 5px 10px;
+            border-collapse: collapse;
+        }
+    </style>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <button type="button" id="btn">호출!</button>
+    <div id="table-box"></div>
+</body>
+
+</html>
+<script>
+    $("#btn").on("click", () => {
+        $.ajax({
+            url: "https://jsonplaceholder.typicode.com/users",
+            dataType: "json",
+            type: "GET",
+            data: {},
+            success: function (data) {
+                let box = document.querySelector("#table-box");
+                let table = document.createElement("talbe");
+                let naming = ["번호", "이름", "이메일", "웹사이트"];
+                for (let i = 0; i < data.length; i++) {
+                    let tr = document.createElement("tr");
+                    if (i == 0) {
+                        for (let j = 0; j < naming.length; j++) {
+                            let th = document.createElement("th");
+                            th.innerText = naming[j];
+                            tr.appendChild(th);
+                        }
+                        table.append(tr);
+                        tr = document.createElement("tr");
+                    }
+                    tr.innerHTML = `
+                        <td>${data[i].id}</td>
+                        <td>${data[i].name}</td>
+                        <td>${data[i].email}</td>
+                        <td>${data[i].website}</td>
+                    `;
+                    table.appendChild(tr);
+                }
+                box.appendChild(table);
+            }
+        });
+    });
+    // id, name, email, website
+    // type => 주소줄에 표시하는걸 생각 GET, POST
+    // data => 조건을 보낸다고 생각 ex) 학생테이블 3학년만 > grade : 3
+    // success => 호출 성공 시. data는 파라미터명 다른이름도 가능
+    /*
+        for (let j = 0; j < naming.length; j++) {
+        let td = document.createElement("td");
+        if (j == 0) {
+            td.innerText = data[i].id;
+        } else if (j == 1) {
+            td.innerText = data[i].name;
+        } else if (j == 2) {
+            td.innerText = data[i].email;
+        } else {
+            td.innerText = data[i].website;
+        }
+        tr.appendChild(td);
+    }
+    */
+</script>

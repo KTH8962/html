@@ -37,12 +37,6 @@ strong {
 	font-weight: bold;
 }
 
-.clearfix::after {
-	clear: both;
-	display: block;
-	content: "";
-}
-
 a {
 	text-decoration: none;
 	color: inherit;
@@ -53,139 +47,6 @@ a:hover {
 	text-decoration: none;
 }
 
-sup {
-	vertical-align: super;
-	font-size: smaller;
-}
-
-sub {
-	vertical-align: sub;
-}
-
-img {
-	vertical-align: top;
-	width: 100%;
-	border: 0;
-	image-rendering: -moz-crisp-edges; /* Firefox */
-	image-rendering: -o-crisp-edges; /* Opera */
-	image-rendering: -webkit-optimize-contrast; /* Webkit (non-standard naming) */
-	image-rendering: crisp-edges;
-}
-
-.blind {
-	position: absolute;
-	top: -9999999px;
-	width: 1px;
-	height: 1px;
-	margin: -1px;
-	padding: 0;
-	overflow: hidden;
-	border: 0;
-	clip: rect(0, 0, 0, 0);
-	white-space: nowrap;
-}
-
-.underline {
-	text-decoration: underline;
-	text-underline-offset: 3px;
-}
-
-:focus {
-	outline: none;
-}
-
-:disabled {
-	cursor: auto;
-}
-
-input::placeholder, input::-webkit-input-placeholder {
-	color: var(--base-white-04);
-	font-family: inherit;
-}
-
-select {
-	-webkit-appearance: none;
-	appearance: none;
-}
-
-select option {
-	color: #000;
-}
-
-input {
-	border: 0;
-}
-
-input[readonly=readonly] {
-	background-color: var(--gowith-black);
-}
-
-input[readonly], textarea[readonly] {
-	background-color: var(--gowith-black);
-}
-
-input:-webkit-autofill {
-	-webkit-box-shadow: 0 0 0 1000px var(--gowith-black) inset;
-	box-shadow: 0 0 0 1000px var(--gowith-black) inset;
-	-webkit-text-fill-color: var(--gowith-white) !important;
-}
-
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-}
-
-input {
-	font-size: inherit;
-	color: inherit;
-	appearance: none;
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-	font-family: inherit;
-	padding: 0;
-}
-
-.fixed {
-	overflow: hidden !important;
-}
-
-input[type=radio], input[type=checkbox], input[type=file] {
-	-webkit-appearance: none;
-	appearance: none;
-	margin: 0;
-	width: 0;
-	height: 0;
-	position: absolute;
-}
-
-button {
-	border: 0;
-	font-size: inherit;
-	background-color: transparent;
-	line-height: inherit;
-	cursor: pointer;
-	padding: 0;
-	color: inherit;
-	font-family: inherit;
-	font-weight: inherit;
-	-webkit-tap-highlight-color: transparent;
-}
-
-body {
-	-webkit-font-smoothing: subpixel-antialiased;
-	-webkit-user-drag: none;
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-ms-user-select: none;
-	-moz-user-select: none;
-	user-select: none;
-	font-family: var(--base-font);
-}
 
 :root {
 	--base-font: "Rubik", "SUIT", sans-serif;
@@ -193,4 +54,8 @@ body {
 	--rubikSuit-font: "RubikSUIT", sans-serif;
 }
 
+
+body {font-family: var(--rubikSuit-font);}
+@font-face { font-family: 'yg-jalnan'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff'); font-weight: normal; font-style: normal; }
+.JF {font-family: 'yg-jalnan';}
 /*** //basic-reset ***/
