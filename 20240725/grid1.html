@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            display: grid;
+            /* auto-fill: 최소만 채움, auto-fit: 최소넘으면 다 채움 */
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-rows: minmax(100px, auto);
+            /* row-gap: 5px; column-gap: 10px; */
+            gap: 5px 10px;
+        }
+        .txt { background-color: aliceblue; padding: 10px;}
+        .txt:nth-child(odd) {background-color: antiquewhite;}
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="txt">1Lorem ipsum dolor sit amet,  aliqua. nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+        <div class="txt">2Lorem ipsum dolor sit amet, consectetur adipisicing elit,  laborum.</div>
+        <div class="txt">3Lorem ipsum dolor sit amet, consectetur  ut aliquip, sunt i e enim ad mi ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+        <div class="txt">4Lorem ipsum dolor sit amet, consectetur </div>
+        <div class="txt">5adipisicing elit, sed do laborum.adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+    </div>
+</body>
+</html>

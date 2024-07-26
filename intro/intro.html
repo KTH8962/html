@@ -9,19 +9,89 @@
 </head>
 <body>
     <header id="header">
-        <nav>
+        <nav class="JF">
             <ul>
-                <li><a href="javascript:void(0);"></a></li>
-                <li><a href="javascript:void(0);"></a></li>
-                <li><a href="javascript:void(0);"></a></li>
+                <li><a href="#visual">Visual</a></li>
+                <li><a href="#grid">Grid</a></li>
+                <li><a href="#transition">Transition</a></li>
+                <li><a href="#animation">Animation</a></li>
             </ul>
         </nav>
     </header>
     <main id="main-container">
-        <section class="visual-box">
+        <section id="visual" class="visual-box">
             <div class="visual">
-                <div class="img-box">이미지</div>
+                <div class="img-box">
+                    <span class="front">앞 이미지</span>
+                    <span class="back">뒤 이미지</span>
+                </div>
                 <div class="txt-box JF"></div>
+            </div>
+        </section>
+        <section id="grid" class="grid-box">
+            <ul class="grid">
+                <li>
+                    <div class="front-box">
+                        <p class="tit">제목제목</p>
+                        <p class="img-box">이미지</p>
+                        <p class="desc">궁금하신건 문의주시면 알려드릴게요.</p>
+                    </div>
+                    <p class="shadow-box">백그림자</p>
+                </li>
+                <li>
+                    <div class="front-box">
+                        <p class="tit">제목제목</p>
+                        <p class="img-box">이미지</p>
+                        <p class="desc">추가적으로 요청해주시면 더 구현해볼게요.</p>
+                    </div>
+                    <p class="shadow-box">백그림자</p>
+                </li>
+                <li>
+                    <div class="front-box">
+                        <p class="tit">제목제목</p>
+                        <p class="img-box">이미지</p>
+                        <p class="desc">몇개는 안배운게 있을거에요.</p>
+                    </div>
+                    <p class="shadow-box">백그림자</p>
+                </li>
+                <li>
+                    <div class="front-box">
+                        <p class="tit">제목제목</p>
+                        <p class="img-box">이미지</p>
+                        <p class="desc">안배운거 궁금한건 문의주세요!</p>
+                    </div>
+                    <p class="shadow-box">백그림자</p>
+                </li>
+            </ul>
+        </section>
+        <section id="transition" class="transition-box">
+            <div class="transition">
+                <ul class="transition-list">
+                    <li>
+                        <p class="img-box"><img src="./assets/images/img1.jpg" alt="샘플 이미지"></p>
+                        <p class="txt">텍스트</p>
+                    </li>
+                    <li>
+                        <p class="img-box"><img src="./assets/images/img2.jpg" alt="샘플 이미지"></p>
+                        <p class="txt">텍스트</p>
+                    </li>
+                    <li>
+                        <p class="img-box"><img src="./assets/images/img3.jpg" alt="샘플 이미지"></p>
+                        <p class="txt">텍스트</p>
+                    </li>
+                    <li>
+                        <p class="img-box"><img src="./assets/images/img4.jpg" alt="샘플 이미지"></p>
+                        <p class="txt">텍스트</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section id="animation" class="animation-box">
+            <div class="animation">
+                <p class="txt JF">애니메이션은 이런게있다입니다. 가볍게봐주세요.</p>
+                <div class="ship-box">
+                    <img src="./assets/images/ship.png" alt="배이미지">
+                </div>
             </div>
         </section>
     </main>
@@ -34,15 +104,17 @@
     function fnTyping(){
         let cnt = 0;
         let visTxt = document.querySelector(".visual .txt-box");
-        let txt = "퍼블리셔를 경험한 예비 풀스택 개발자\n김태환입니다.";
+        let txt = "예비 풀스택 개발자를 꿈꾸는\nㅇㅇㅇ입니다.";
         
         let fninterval = setInterval(() => {
             if(txt[cnt] === "\n") {
-                txt[cnt] = "<br>";
+                visTxt.innerHTML += "<br>";
+            } else {
+                visTxt.innerHTML += txt[cnt];
             }
-            visTxt.innerHTML += txt[cnt];
             cnt++;
             if(cnt == txt.length) {
+                // setInterval 종료
                 clearInterval(fninterval);
             }
         }, 150);        

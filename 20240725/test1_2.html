@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn {
+            background-color : rgb(39, 185, 39);
+            color : white;
+            padding : 15px;
+            font-size: 15px;
+            border : none;
+            cursor : pointer;
+
+        }
+        .menu {
+            background-color: #f9f9f9;
+            width: 150px;            
+            height: 0; overflow: hidden; transition: height .4s, box-shadow .1s;
+        }
+        .menu.active {
+            box-shadow: 1px 3px 8px 3px #e7e3e3;
+            height: 123PX;
+            transition: height .4s, box-shadow .2s .2s;
+        }
+        .menu a {
+            display: block;
+            padding : 10px;
+        }
+        .menu a:hover {
+            background-color: #ccc;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="top-menu">
+        <button class="btn" onclick="dropDown();">Dropdown</button>
+        <div class="menu">
+            <a>Menu 1</a>
+            <a>Menu 2</a>
+            <a>Menu 3</a>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    function dropDown(){
+        document.querySelector(".menu").classList.toggle("active");
+    }
+</script>
