@@ -280,6 +280,10 @@ nav ul li+li {
     transform-origin: center bottom;
 }
 
+.ship-box img {
+    width: 100%;
+}
+
 @keyframes shipAni {
     0% {
         transform: rotate(-3deg);
