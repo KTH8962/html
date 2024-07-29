@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        tr, th, td {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="searchTxt">
+        <button type="button" @click="fnSearch">검색</button>
+        <button type="button" @click="searchVal = ''">초기화</button>
+        <table>
+            <tr>
+                <th>이름</th>
+                <th>나이</th>
+                <th>주소</th>
+            </tr>
+            <tr v-for="item in userList"  :key="item.name">
+                <td>{{item.name}}</td>
+                    <td>{{item.age}}</td>
+                    <td>{{item.addr}}</td>
+                <!-- <template v-if="searchVal != ''">
+                    <template v-if="item.name == searchVal">
+                        <td>{{item.name}}</td>
+                        <td>{{item.age}}</td>
+                        <td>{{item.addr}}</td>
+                    </template>
+                </template>
+                <template v-else>
+                    <td>{{item.name}}</td>
+                    <td>{{item.age}}</td>
+                    <td>{{item.addr}}</td>
+                </template> -->
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                // 변수 영역, ex) name : '홍길동', age : 20
+                searchTxt : "",
+                searchVal : "",
+                userList : [
+                    {name : "홍길동", age : 20, addr : "인천"},
+                    {name : "김철수", age : 30, addr : "서울"},
+                    {name : "박영희", age : 25, addr : "부산"},
+                    {name : "박명수", age : 40, addr : "제주도"}
+                ]
+            };
+        },
+        methods: {
+            // 메소드 영역 
+            fnSearch() {
+                this.searchVal = this.searchTxt;
+                this.searchTxt = "";
+                console.log(this.searchVal, this.searchVal)
+            },
+        },
+        mounted() {
+            // 처음 시작할 때 실행되는 부분
+        }
+    });
+    app.mount('#app');
+</script>
