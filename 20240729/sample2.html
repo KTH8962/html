@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app"> 
+        <input type="text" placeholder="나이를 입력하세요." v-model="age">
+        <div>
+            <button type="button" @click="chkAge">확인!</button>
+        </div>
+        <p v-if="txt != ''">{{txt}}</p>
+    </div>
+</body>
+</html>
+<script>
+    const app = Vue.createApp({
+            data() {
+                return {
+                    // 변수 영역, ex) name : '홍길동', age : 20
+                    age : "",
+                    txt : ""
+                };
+            },
+            methods: {
+               // 메소드 영역
+                chkAge() {
+                    this.txt = this.age >= 30 ? "30세 이상 입니다." : "30세 미만 입니다.";
+                }
+            },
+            mounted() {
+                // 처음 시작할 때 실행되는 부분
+            }
+        });
+        app.mount('#app');
+</script>
