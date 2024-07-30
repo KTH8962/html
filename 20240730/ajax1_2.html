@@ -29,15 +29,28 @@
             <th>학년</th>
             <th>성별</th>
         </tr>
-        <tr v-for="item in list">
-            <td>{{item.STU_NO}}</td>
-            <td>{{item.STU_NAME}}</td>
-            <td>{{item.STU_DEPT}}</td>
-            <td>{{item.STU_GRADE}}</td>
-            <td>
-                <template v-if="item.STU_GENDER == 'M'">남자</template>
-                <template v-else>여자</template>
-            </td>
+        <tr v-for="(item, index) in list">
+            <!-- <template v-if="listNumber == index">
+                <td>{{item.STU_NO}}</td>
+                <td><input type="text" v-model="item.STU_NAME"></td>
+                <td><input type="text" v-model="item.STU_DEPT"></td>
+                <td><input type="text" v-model="item.STU_GRADE"></td>
+                <td><input type="text" v-model="item.STU_GENDER"></td>
+                <td>
+                    <button type="button" @click="">저장</button>
+                </td>
+            </template>
+            <template v-else>
+                <td>{{item.STU_NO}}</td>
+                <td>{{item.STU_NAME}}</td>
+                <td>{{item.STU_DEPT}}</td>
+                <td>{{item.STU_GRADE}}</td>
+                <td>
+                    <template v-if="item.STU_GENDER == 'M'">남자</template>
+                    <template v-else>여자</template>
+                </td>
+                <td><button type="button" @click="fnModify(index)">수정</button></td>
+            </template> -->
         </tr>
     </table>
     </ul>
@@ -48,14 +61,15 @@
         data() {
             return {
                 list : [],
-                keyword : ""
+                keyword : "",
+                grade : "1"
             };
         },
         methods: {
             fnGetList(){
                 let self = this;
                 $.ajax({
-                    url : "http://localhost:3000/list?keyword=" + self.keyword,
+                    url : `http://localhost:3000/list?keyword="${self.keyword}&grade=${self.grade}`,
                     dataType : "json",
                     type : "GET",
                     data : {},
@@ -73,10 +87,12 @@
                     type : "GET",
                     data : {},
                     success : function(data){
-                        console.log(data);
                         self.list = data;
                     }
                 });
+            },
+            fnModify(num) {
+                this.listNumber = num;
             }
         },
         mounted() {

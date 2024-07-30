@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0; padding: 0;
+            font-size: 100%;
+            box-sizing: border-box;
+        }
+        ul {
+            list-style: none;
+        }
+        body {
+            background-color: #fff;
+        }
+        #container {
+            width: 500px;
+            margin: 30px auto 0; padding: 30px 20px;
+            border-radius: 10px; background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .join-box .tit {
+            text-align: center;
+            font-weight: bold;
+            font-size: 24px; color: #333;
+        }
+        .join-box + .join-box {
+            margin-top: 30px; padding-top: 30px;
+            border-top: 1px solid #f2f2f2;
+        }
+        .join-list {
+            margin-top: 20px;
+        }
+        .join-list li {
+            font-size: 0;
+            position: relative;
+        }
+        .join-list li + li {
+            margin-top: 36px;
+        }
+        .join-list li > * {
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 16px;
+        }
+        .join-list li input[type="text"], .join-list li select {
+            width: 100%; height: 46px; padding: 0 10px;
+            border: 1px solid #ddd; border-radius: 4px;
+        }
+        .join-list li input[type="radio"] ~ input[type="radio"] {
+            margin-left: 15px;
+        }
+        .join-list li .join-sub:not(.none) {
+            position: absolute;
+            left: 10px; top: 50%; line-height: 1; margin-top: -8px;
+            transition: all .2s;
+        }
+        .join-list li input:focus + .join-sub,
+        .join-list li input:valid + .join-sub {
+            top: -16px;
+        }
+        .ra-box {
+            position: relative;
+        }
+        .ra-box input[type="radio"] {
+            appearance: none;
+            position: relative; padding-left: 20px;
+        }
+        .ra-box input[type="radio"]:checked + label {
+            font-weight: bold;
+        }
+        .ra-box input[type="radio"]:checked + label .box {
+            border-color: #000;
+        }
+        .ra-box input[type="radio"]:checked + label .box::after {
+            transform: scale(1);
+        }
+        .ra-box + .ra-box {
+            margin-left: 10px;
+        }
+        .ra-box .box {
+            position: absolute;
+            width: 16px; height: 16px;
+            left: 0; top: 50%; margin-top: -8px;
+            border: 1px solid #ccc; border-radius: 100%;
+            transition: all .2s;
+        }
+        .ra-box .box::after {
+            display: block; content: ''; width: 10px; height: 10px; transform: scale(0);
+            background-color: #000; position: absolute; top: 50%; left: 50%; border-radius: 100%;
+            margin-top: -5px; margin-left: -5px; transition: all .2s; 
+        }
+        .ra-box label {
+            cursor: pointer;
+            transition: all .2s;
+        }
+        .btn {
+            display: block;
+            margin: 30px auto 0;
+            border: 1px solid #444;
+            border-radius: 8px;
+            width: 120px; height: 40px;
+            background-color: #fff;
+            font-weight: bold; cursor: pointer;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div id="container">
+            <div class="join-box">
+                <p class="tit">학생 추가</p>
+                <ul class="join-list">
+                    <li>
+                        <input type="text" id="stuno" v-model="stuNo" required autofocus>
+                        <label for="stuno" class="join-sub">학번</label>
+                    </li>
+                    <li>
+                        <input type="text" id="id" v-model="stuName" required autofocus>
+                        <label for="id" class="join-sub">이름</label>
+                    </li>
+                    <li>
+                        <input type="text" id="dept" v-model="stuDept" required autofocus>
+                        <label for="dept" class="join-sub">학과</label>
+                    </li>
+                    <li>
+                        <select v-model="stuGrade">
+                            <option value="" hidden>학년을 선택하세요</option>
+                            <option value="1">1학년</option>
+                            <option value="2">2학년</option>
+                            <option value="3">3학년</option>
+                            <option value="4">4학년</option>
+                        </select>
+                    </li>
+                    <li>
+                        <div class="ra-box"><input type="radio" id="M" name="gender" value="M" v-model="stuGender"><label for="M"><span class="box"></span>남자</label></div>
+                        <div class="ra-box"><input type="radio" id="F" name="gender" value="F" v-model="stuGender"><label for="F"><span class="box"></span>여자</label></div>
+                    </li>
+                </ul>
+            </div>
+            <button type="button" class="btn" @click="fnInsert(item)">제출</button>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                stuNo: "",
+                stuName: "",
+                stuDept: "",
+                stuGrade: "",
+                stuGender: ""
+            };
+        },
+        methods: {
+            fnInsert(item){
+                
+                //console.log(this.stuNo, this.stuName, this.stuDept, this.stuGrade, this.stuGender);
+                let self = this;
+                let url = `http://localhost:3000/insert?stuo=${this.stuNo}&stuName=${this.stuName}&stuDept=${this.stuDept}&stuGrade=${this.stuGrade}&stuGender=${this.stuGender}`;
+                $.ajax({
+                    url : url,
+                    dataType : "json",
+                    type : "GET",
+                    data : {},
+                    success : function(data){
+                        if(!(self.stuNo && self.stuName && self.stuDept && self.stuGrade && self.stuGender)) {
+                            return;
+                        }
+                        alert(data.message);
+                    }
+                });
+            },
+        },
+        mounted() {
+
+        }
+    });
+    app.mount('#app');
+</script>
