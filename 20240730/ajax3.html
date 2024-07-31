@@ -143,7 +143,7 @@
                     </li>
                 </ul>
             </div>
-            <button type="button" class="btn" @click="fnInsert(item)">제출</button>
+            <button type="button" class="btn" @click="fnInsert()">제출</button>
         </div>
     </div>
 </body>
@@ -161,11 +161,11 @@
             };
         },
         methods: {
-            fnInsert(item){
+            fnInsert(){
                 
                 //console.log(this.stuNo, this.stuName, this.stuDept, this.stuGrade, this.stuGender);
                 let self = this;
-                let url = `http://localhost:3000/insert?stuo=${this.stuNo}&stuName=${this.stuName}&stuDept=${this.stuDept}&stuGrade=${this.stuGrade}&stuGender=${this.stuGender}`;
+                let url = `http://localhost:3000/insert?stuNo=${this.stuNo}&stuName=${this.stuName}&stuDept=${this.stuDept}&stuGrade=${this.stuGrade}&stuGender=${this.stuGender}`;
                 $.ajax({
                     url : url,
                     dataType : "json",
