@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <input type="text" placeholder="학번" v-model="stuNo">
+        <input type="text" placeholder="이름" v-model="stuName">
+        <input type="text" placeholder="학과" v-model="stuDept"> -->
+        <input type="text" placeholder="학번" v-model="info.stuNo">
+        <input type="text" placeholder="이름" v-model="info.stuName">
+        <input type="text" placeholder="학과" v-model="info.stuDept">
+        <button type="button" @click="fnAdd">추가</button>
+        <button type="button" @click="review">클릭!</button>
+    </div>
+</body>
+
+</html>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                // 변수 영역, ex) name : '홍길동', age : 20
+                info : {},
+                stuNo: "",
+                stuName: "",
+                stuDept: ""
+            };
+        },
+        methods: {
+            // 메소드 영역 
+            fnAdd() {
+                let self = this;
+                let url = `http://localhost:3000/postTest`;
+                $.ajax({
+                    url: url,
+                    dataType: "json",
+                    type: "POST",
+                    data: JSON.stringify(self.info),
+                    contentType : "application/json",
+                    success: function (data) {
+                        alert(data.msg);
+                    }
+                });
+            },
+            // fnAdd() {
+            //     let self = this;
+            //     let url = `http://localhost:3000/getTest?stuNo=${this.stuNo}&stuName=${this.stuName}&stuDept=${this.stuDept}`;
+            //     $.ajax({
+            //         url: url,
+            //         dataType: "json",
+            //         type: "GET",
+            //         data: {},
+            //         success: function (data) {
+            //             alert(data.msg);
+            //         }
+            //     });
+            // },
+            review() { // 12345412
+                let self = this;
+                let url = `http://localhost:3000/stuDelete?stuNo=12345412`;
+                $.ajax({
+                    url: url,
+                    dataType: "json",
+                    type: "GET",
+                    data: {},
+                    success: function (data) {
+                        alert(data.msg);
+                    }
+                });
+            },
+        },
+        mounted() {
+            // 처음 시작할 때 실행되는 부분
+        }
+    });
+    app.mount('#app');
+</script>
