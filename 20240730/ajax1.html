@@ -90,23 +90,21 @@
                 checkVal : [],
                 isCheked : false,
                 isAllcehcked : false,
-                defaultList : []
+                defaultList : [],
             };
         },
         methods: {
             fnGetList(){
                 let self = this;
                 $.ajax({
-                    url : `http://localhost:3000/list?keyword=${self.keyword}&grade=${self.stuGrade}`,
+                    url : `http://localhost:3000/list2?keyword=${self.keyword}&grade=${self.stuGrade}`,
                     dataType : "json",
                     type : "GET",
                     data : {},
                     success : function(data){
                         //console.log(data);
                         self.list = data;
-                        for(let i=0; i <self.list.length; i++) {
-                            self.defaultList.push(self.list[i].STU_NO);
-                        }
+                        self.list.map(key => self.defaultList.push(key.STU_NO));
                     }
                 });
             },
@@ -136,23 +134,6 @@
                     }
                 });
             },
-            // fnRemove(stuNo) {//radio
-            //     if(!confirm("삭제하시겠습니까?")) {
-            //         return;
-            //     }
-            //     let self = this;
-            //     $.ajax({
-            //         url : `http://localhost:3000/delete?stuNo=${stuNo}`,
-            //         dataType : "json",
-            //         type : "GET",
-            //         data : {},
-            //         success : function(data){
-            //             alert(data[0].message);
-            //             self.fnGetList();
-            //             self.radioVal = "";
-            //         }
-            //     });
-            // },
             fnSave(stuNo, name, dept, grade, gender) {
                 let self = this;
                 $.ajax({
@@ -182,6 +163,23 @@
                     this.isAllcehcked = false;
                 }
             },
+            // fnRemove(stuNo) {//radio
+            //     if(!confirm("삭제하시겠습니까?")) {
+            //         return;
+            //     }
+            //     let self = this;
+            //     $.ajax({
+            //         url : `http://localhost:3000/delete?stuNo=${stuNo}`,
+            //         dataType : "json",
+            //         type : "GET",
+            //         data : {},
+            //         success : function(data){
+            //             alert(data[0].message);
+            //             self.fnGetList();
+            //             self.radioVal = "";
+            //         }
+            //     });
+            // },
         },
         mounted() {
             this.fnGetList();

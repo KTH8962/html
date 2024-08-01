@@ -118,9 +118,10 @@
                     success : function(data){
                         //console.log(data);
                         self.list = data;
-                        for(let i=0; i <self.list.length; i++) {
-                            self.defaultList.push(self.list[i].STU_NO);
-                        }
+                        self.list.map(key => self.defaultList.push(key.STU_NO));
+                        // for(let i=0; i <self.list.length; i++) {
+                        //     self.defaultList.push(self.list[i].STU_NO);
+                        // }
                     }
                 });
             },
