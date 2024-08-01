@@ -18,6 +18,9 @@
         td input {
             width: 80px;
         }
+        a {
+            text-decoration: none; color: inherit;
+        }
     </style>
 </head>
 <body>
@@ -30,7 +33,15 @@
         <option value="3">3학년</option>
     </select>
     <button type="button" @click="fnGetList">검색</button>
-    <div style="padding: 15px 0;"></div>
+    <div style="margin: 10px 0 15px; display: flex;">
+        <label><input type="radio" name="array" v-model="orderVal" @change="fnGetList" value="ASC" :checked="orderVal">오름차순</label>
+        <label><input type="radio" name="array" v-model="orderVal" @change="fnGetList" value="DESC">내림차순</label>
+        <select v-model="orderName" @change="fnGetList">
+            <option value="name">이름순</option>
+            <option value="no">학번순</option>
+            <option value="grade">학년순</option>
+        </select>
+    </div>
     <table>
         <tr>
             <th><input type="checkbox" v-model="isAllcehcked" :checked="isAllcehcked" @change="fnAllCheck(!isAllcehcked)"></th>
@@ -63,7 +74,7 @@
             </template>
             <template v-else>
                 <td><label :for="'stu-' + index">{{item.STU_NO}}</label></td>
-                <td>{{item.STU_NAME}}</td>
+                <td><a href="javascript:" @click="fnInfo(item.STU_NO)">{{item.STU_NAME}}</a></td>
                 <td>{{item.STU_DEPT}}</td>
                 <td>{{item.STU_GRADE}}</td>
                 <td>
@@ -90,14 +101,17 @@
                 checkVal : [],
                 isCheked : false,
                 isAllcehcked : false,
-                defaultList : []
+                defaultList : [],
+                orderVal : "ASC",
+                orderName : "name"
             };
         },
         methods: {
             fnGetList(){
                 let self = this;
+                let url = `http://localhost:3000/list?keyword=${self.keyword}&grade=${self.stuGrade}&order=${self.orderVal}&orderName=${self.orderName}`;
                 $.ajax({
-                    url : `http://localhost:3000/list?keyword=${self.keyword}&grade=${self.stuGrade}`,
+                    url : url,
                     dataType : "json",
                     type : "GET",
                     data : {},
@@ -182,6 +196,9 @@
                     this.isAllcehcked = false;
                 }
             },
+            fnInfo(stuNo) {
+                location.href=`info.html?stuNo=${stuNo}`;
+            }
         },
         mounted() {
             this.fnGetList();

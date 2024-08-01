@@ -4,19 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body>
     <div id="app"> 
-        <div>
-            <label>아이디 : <input type="text" placeholder="아이디입력" v-model="user.id"></label>
-        </div>
-        <div>
-            <label>비밀번호 : <input type="password" placeholder="패스워드입력" v-model="user.pwd"></label>
-        </div>
-        <div>
-            <button type="button" @click="fnLogin">로그인</button>
+        <div id="container">
+            <ul class="join-list">
+                <li>
+                    <p>아이디 </p>
+                    <input type="text" placeholder="아이디입력" v-model="user.id">
+                </li>
+                <li>
+                    <p>비밀번호</p>
+                    <input type="password" placeholder="패스워드입력" v-model="user.pwd">
+                </li>
+                <li>
+                    <button type="button" @click="fnLogin" class="btn">로그인</button>
+                </li>
+            </ul>
         </div>
     </div>
 </body>

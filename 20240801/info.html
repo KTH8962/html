@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.7.1.min.js"></script> 
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 이름, 학번, 과목, 점수 -->
+        {{stuNo}}
+    </div>
+</body>
+</html>
+<script>    
+    // let splitStuNo = location.search.split("=");
+    const app = Vue.createApp({
+        data() {
+            return {
+                stuNo : ""
+            };
+        },
+        methods: {
+            fnSave(){
+                $.ajax({
+                    url : `http://localhost:3000/qwer?stuNo=${this.stuNo}&grade=${this.stuGrade}`,
+                    dataType : "json",
+                    type : "GET",
+                    data : {},
+                    success : function(data){
+                    }
+                });
+            }
+        },
+        mounted() {
+            // || ''; => undefined가 들어올 경우 대비하는 빈값 추가
+            const queryParams = new URLSearchParams(window.location.search);
+            this.stuNo = queryParams.get('stuNo') || '';
+        }
+    });
+    app.mount('#app');
+</script>
